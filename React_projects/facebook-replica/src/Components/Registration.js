@@ -3,14 +3,11 @@ import bootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import logo from '../facebook.png'
 
 function Registration() {
-
-
     const[RName,setRName]=useState('')
     const[RUsername,setRUsername]=useState('')
     const[RPassword,setRPassword]=useState('')
     
     function RegisterMe(){
-        alert(123)
         let credentials = JSON.parse(localStorage.getItem('cred') || "[]")
 
         let credential = {
@@ -20,13 +17,16 @@ function Registration() {
 
         credentials.push(credential)
 
-        localStorage.setItem('cred',JSON.stringify(credentials))
+        localStorage.setItem('cred',JSON.stringify(credentials))   
     }
+    
+   
+
 
     return <div>
         <div className='row'>
             <div className='col-md-6 Image'>
-                <img src={logo} />
+                <img src={logo} alt='' />
             </div>
             <div className='col-md-6 register'>
                 <h1>Register</h1>
