@@ -25,7 +25,7 @@ function Todo(){
         setTasks(duptasks)
     }
 
-    //here tasklist resturns the div and all its childs
+    //here tasklist returns the div and all its childs
     const tasklist = tasks.map((item,index)=>{ // using map function to make new task display on screen
         return <div>
             <h2>{index+1}. {item}</h2>
