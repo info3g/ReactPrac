@@ -1,0 +1,31 @@
+.btn{
+    display: block;
+    width: 100%;
+    height: 117px;
+    border: none;
+    background-color: #4CAF50;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    
+}
+
+.all-buttons{
+    width: 100%;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+/* .Clear-btn{
+    display: block;
+    width: 100%;
+    height: 117px;
+    border: none;
+    background-color: #4CAF50;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    
+} */
