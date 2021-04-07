@@ -1,0 +1,15 @@
+input.form-control {
+    width: 700px;
+    margin: auto;
+}
+
+.search-box {
+    padding: 30px;
+}
+
+button.btn.btn-primary {
+    width: 10%;
+    position: absolute;
+    top: 85px;
+    right: 200px;
+}
