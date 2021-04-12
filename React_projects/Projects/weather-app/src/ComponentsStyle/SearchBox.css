@@ -1,10 +1,10 @@
 input.form-control {
     width: 700px;
-    margin: auto;
 }
 
 .search-box {
     padding: 30px;
+    display: flex;
 }
 
 button.btn.btn-primary {
@@ -12,4 +12,8 @@ button.btn.btn-primary {
     position: absolute;
     top: 85px;
     right: 200px;
+}
+input.form-control.Range {
+    width: 25%;
+    margin: 0 11px;
 }

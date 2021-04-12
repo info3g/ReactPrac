@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.19.26",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -11,7 +12,9 @@
     "cors": "^2.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-elastic-carousel": "^0.11.4",
     "react-leaf-carousel": "^2.0.3",
+    "react-multi-carousel": "^2.6.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
   },

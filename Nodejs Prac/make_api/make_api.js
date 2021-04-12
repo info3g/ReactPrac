@@ -15,31 +15,31 @@ app.use(cors()) // cors is cross-origin resource sharing, if this is not used we
 
 const router = express.Router()
 
-router.get('/',function (req,res) {
-    const config = {
-                method: 'get',
-                url: 'http://api.openweathermap.org/data/2.5/forecast?q=india&appid=c4a2278c07f801b5347271d8875c9920',
-                headers: { }
-              };
+// router.get('/',function (req,res) {
+//     const config = {
+//                 method: 'get',
+//                 url: 'http://api.openweathermap.org/data/2.5/forecast?q=india&appid=c4a2278c07f801b5347271d8875c9920',
+//                 headers: { }
+//               };
               
-              axios(config)
-              .then(function (response) {
-                  const a  = response.data
-                  res.json(a)
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-})
+//               axios(config)
+//               .then(function (response) {
+//                   const a  = response.data
+//                   res.json(a)
+//               })
+//               .catch(function (error) {
+//                 console.log(error);
+//               });
+// })
 
 /////////////post api//////////////////////////////
 
-router.route('/country')
+// router.route('/country')
 
-.post(function (req,res) {
-    const country = req.body.country
-    console.log(country)
-})
+// .post(function (req,res) {
+//     const country = req.body.country
+//     console.log(country)
+// })
 
 ///////////////////////////////////////////////////
 
@@ -58,6 +58,7 @@ router.route('/weather')
     axios(config)
     .then(function (response) {
         const data  = response.data
+        // console.log(data)
         res.json(data)
     })
     .catch(function (error) {
