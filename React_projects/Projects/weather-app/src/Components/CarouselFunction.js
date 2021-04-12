@@ -41,8 +41,18 @@ function CarouselFunction() {
       const iconcode = val.weather[0].icon
       const image = "http://openweathermap.org/img/w/" + iconcode + ".png"
       const tempCelcius = Math.round(val.main.temp - 273.15)
-      console.log(idx)
-      if(idx<range){
+      // console.log(idx)
+      if(range==0){
+        console.log(123)
+        weatherReport.push(<h1>Selected Range was Zero</h1>)
+        if(idx!==0){
+          weatherReport.splice(1,1)
+        }
+        else{
+
+        }
+      }
+      else if(idx<range){
         weatherReport.push(
           
           <div key={idx} className='weatherCards'>
