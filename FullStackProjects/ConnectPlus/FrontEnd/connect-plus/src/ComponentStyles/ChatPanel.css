@@ -1,0 +1,19 @@
+
+
+.chat-panel.col-md-9{
+    background-image: url('../Media/Chatpanel/whatsappChatPanel.jpg')
+}
+
+h4{
+    color: white;
+}
+
+h1{
+    color: white;
+}
+
+input.ChatPanel.form-control {
+    position: absolute;
+    bottom: 0px;
+    width: 96%;
+}
