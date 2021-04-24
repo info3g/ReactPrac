@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/whatsapp',{useNewUrlParser: true, us
 
 
 const NamesModel = mongoose.model('whatsappNames',{name:String})
+const UsersModel = mongoose.model('registeredusers',{'name':String,'email':String,'password':String})
 
 //insert names from file
 // fs.readFile('names.json','utf-8',function (err,data) {
@@ -48,7 +49,67 @@ const NamesModel = mongoose.model('whatsappNames',{name:String})
 //     }
 // })
 
+//register new users from sign up page
+app.post('/registerUsers',function (req,res) {
+    const name = req.body.username
+    const email = req.body.email
+    const password = req.body.password
 
+    const newUser = new UsersModel({'name':name,'email':email,'password':password})
+
+    newUser.save(function (err) {
+        if(err){
+            res.send(err)
+        }
+        else{
+            res.send('Record added')
+        }
+    })
+})
+
+//authenticate users while logging in
+app.post('/authenticateUsers',function(req,res){
+    //name can either contain username or email
+    const name = req.body.name
+    const password = req.body.password
+    
+    let search_parameters ={}
+
+    //if name contains @ then it's an email otherwise a username
+    if(name.includes('@')){
+        search_parameters={'email':name,'password':password}
+        console.log('email was passed')
+    }
+    else{
+        search_parameters={'name':name,'password':password}
+        console.log('name was passed')
+    }    
+
+    UsersModel.find(search_parameters,function(err,documents){
+        if(err){
+            res.send('Records not found')
+        }
+        else{
+            console.log('sending docs')
+            res.send(documents)
+            
+        }
+    })
+})
+
+// this api won't let new users to keep existing username/email
+app.post('/checkExistingCredentials',function(req,res){
+    UsersModel.find({},{name:1,email:1},function(err,documents){
+        if(err){
+            res.send('Error Occured')
+        }
+        else{
+            res.send(documents)
+        }
+    })
+})
+
+//get all names from whatsappnames collection
 app.post('/getnames',function (req,res) {
     const name = req.body.name
     if(name.length===0){
