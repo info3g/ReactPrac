@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../../ComponentStyles/LoginMainPage.css'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import swal from 'sweetalert2'
+import {MessageProvider} from '../../MessageContext'
 
 function LoginMainPage(){
     //in username variable, user can enter either email or username so we will be checking for both. 
     const[username,setUsername] = useState('')
     const[pass,setPass] = useState('')
+    const dataObj = useContext(MessageProvider)
 
     const history = useHistory()
 
@@ -19,7 +22,11 @@ function LoginMainPage(){
         axios.post(url,data).then((res)=>{
                 console.log(res)
                 if(res.data.length !== 0){
+                    dataObj.getLoggedStatus(true)
                     history.push('/dashboard')
+                }
+                else{
+                    swal.fire('Oops...','Wrong Credentials','error')
                 }
                 console.log(res.data.length)
         }).catch((err)=>{

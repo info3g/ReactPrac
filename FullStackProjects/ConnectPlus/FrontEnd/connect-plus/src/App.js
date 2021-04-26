@@ -6,9 +6,13 @@ import Login from './Pages/Login';
 import Header from './Components/Header/Header'
 import {BrowserRouter,Route} from 'react-router-dom'
 import UserDashboard from './Pages/UserDashboard';
+import MessageContext from './MessageContext'
+
+
 function App() {
   return (
     <div className="App">
+      <MessageContext>
       <BrowserRouter>
       <Header />
      {/* <Chat /> */}
@@ -18,6 +22,7 @@ function App() {
      <Route path='/login' component={Login} exact />
      <Route path='/dashboard' component={UserDashboard} exact/>
      </BrowserRouter>
+     </MessageContext>
     </div>
   );
 }

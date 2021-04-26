@@ -1,19 +1,24 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import '../../ComponentStyles/SignUpMain.css'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 
+import {MessageProvider} from '../../MessageContext'
+
 
 function SignUpMainPage() {
 
-    let allDBData = []
+    const[allDBData,setAllDBData]  = useState([])
+    const dataObj = useContext(MessageProvider)
+
     //keep check that new users should not keep existing username/email
     useEffect(()=>{
         const url='http://localhost:5000/checkExistingCredentials'
 
         axios.post(url).then((res)=>{
-            console.log(res.data)
-            allDBData = res.data
+            console.log(res.data) 
+            setAllDBData(res.data)
+
         }).catch((err)=>{
             console.log(err)
         })    
@@ -33,12 +38,30 @@ function SignUpMainPage() {
         // alert(`${username} ${email} ${pass} ${confirmPass}`)
         alert(`${username} ${email} ${pass} ${confirmPass} ${isChecked}`)
         if(username.length > 0 && email.length > 0 && pass.length > 0 && confirmPass.length > 0
-             && isChecked === true && pass === confirmPass){
+             && isChecked === true && pass === confirmPass ){
             
             //username should not contain @ to differ from username and email
-            if(username.includes('@')){
+
+                const unique_email = allDBData.forEach(function(existing_email,idx){
+                    if(existing_email !== email){
+                        console.log('existing_email true')
+                        return true
+                        
+                    }
+                    else if(idx === allDBData.length-1){
+                        console.log('existing_email false')
+                            return false
+                    }
+                    else{}
+                    
+                })
+
+                
+
+            if(username.includes('@') || unique_email !== true){
                 alert('Recheck form')
-            }
+            } 
+            
             else{
                 //save user details to DB
                 const url = 'http://localhost:5000/registerUsers'
@@ -51,7 +74,8 @@ function SignUpMainPage() {
                 })
                 alert('all ok')
                 //got to dashboard
-
+                dataObj.getLoggedStatus(true)
+                // console.log(dataObj)
                 history.push('/dashboard')
 
             }
