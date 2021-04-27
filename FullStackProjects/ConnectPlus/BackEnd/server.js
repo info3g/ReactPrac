@@ -69,21 +69,16 @@ app.post('/registerUsers',function (req,res) {
 
 //authenticate users while logging in
 app.post('/authenticateUsers',function(req,res){
-    //name can either contain username or email
-    const name = req.body.name
+    
+    const email = req.body.email
     const password = req.body.password
     
     let search_parameters ={}
 
-    //if name contains @ then it's an email otherwise a username
-    if(name.includes('@')){
-        search_parameters={'email':name,'password':password}
+    
+
+    search_parameters={'email':email,'password':password}
         console.log('email was passed')
-    }
-    else{
-        search_parameters={'name':name,'password':password}
-        console.log('name was passed')
-    }    
 
     UsersModel.find(search_parameters,function(err,documents){
         if(err){

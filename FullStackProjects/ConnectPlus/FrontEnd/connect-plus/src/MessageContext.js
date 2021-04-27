@@ -9,7 +9,7 @@ class MessageContext extends React.Component{
         this.state={
             contactsUrl: 'No Contact Selected',
             getContactsUrl: this.getContactsUrl,
-            isloggedin: false,
+            isloggedin: localStorage.setItem('loggedin',false),
             getLoggedStatus: this.getLoggedStatus
 
         }
@@ -21,9 +21,9 @@ class MessageContext extends React.Component{
         })
     }
 
-    getLoggedStatus = (logged) =>{
+    getLoggedStatus = () =>{
         this.setState({
-            isloggedin: logged
+            isloggedin: localStorage.getItem('loggedin')
         })
     }
 

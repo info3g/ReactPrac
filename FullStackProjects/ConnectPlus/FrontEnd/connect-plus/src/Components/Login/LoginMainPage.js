@@ -17,12 +17,14 @@ function LoginMainPage(){
         e.preventDefault()
         //check for all records in db to match the credentials
         const url = 'http://localhost:5000/authenticateUsers'
-        //username can either have email or username, that is handled in backend
-        const data = {'name':username,'password':pass}
+        //username will have email of the user, that is handled in backend
+        const data = {'email':username,'password':pass}
         axios.post(url,data).then((res)=>{
                 console.log(res)
                 if(res.data.length !== 0){
-                    dataObj.getLoggedStatus(true)
+                    // dataObj.getLoggedStatus(true)
+                    localStorage.setItem('loggedin',true)
+                    dataObj.getLoggedStatus()
                     history.push('/dashboard')
                 }
                 else{

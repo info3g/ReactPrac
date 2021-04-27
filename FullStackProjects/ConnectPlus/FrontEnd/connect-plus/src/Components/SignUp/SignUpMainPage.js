@@ -44,12 +44,12 @@ function SignUpMainPage() {
 
                 const unique_email = allDBData.forEach(function(existing_email,idx){
                     if(existing_email !== email){
-                        console.log('existing_email true')
+                        // console.log('existing_email true')
                         return true
                         
                     }
                     else if(idx === allDBData.length-1){
-                        console.log('existing_email false')
+                        // console.log('existing_email false')
                             return false
                     }
                     else{}
@@ -58,8 +58,8 @@ function SignUpMainPage() {
 
                 
 
-            if(username.includes('@') || unique_email !== true){
-                alert('Recheck form')
+            if(username.includes('@') || unique_email === false){
+                alert('email or @ Recheck form')
             } 
             
             else{
@@ -74,14 +74,15 @@ function SignUpMainPage() {
                 })
                 alert('all ok')
                 //got to dashboard
-                dataObj.getLoggedStatus(true)
+                localStorage.setItem('loggedin',true)
+                dataObj.getLoggedStatus()
                 // console.log(dataObj)
                 history.push('/dashboard')
 
             }
         } 
         else{
-            alert('Recheck form')
+            alert('last Recheck form')
         }
     }
    

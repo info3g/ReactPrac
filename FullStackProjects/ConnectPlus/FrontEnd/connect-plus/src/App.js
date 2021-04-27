@@ -7,6 +7,7 @@ import Header from './Components/Header/Header'
 import {BrowserRouter,Route} from 'react-router-dom'
 import UserDashboard from './Pages/UserDashboard';
 import MessageContext from './MessageContext'
+import Home from './Pages/Home';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
       <Header />
      {/* <Chat /> */}
+     <Route path='/' component={Home} exact />
      <Route path="/chats" component={Chat} exact  />
      {/* <SignUp /> */}
      <Route path="/signup" component={SignUp} exact />
