@@ -10,7 +10,9 @@ class MessageContext extends React.Component{
             contactsUrl: 'No Contact Selected',
             getContactsUrl: this.getContactsUrl,
             isloggedin: localStorage.setItem('loggedin',false),
-            getLoggedStatus: this.getLoggedStatus
+            getLoggedStatus: this.getLoggedStatus,
+            loggedinEmail:'',
+            getLoggedinEmail: this.getLoggedinEmail
 
         }
     }
@@ -24,6 +26,12 @@ class MessageContext extends React.Component{
     getLoggedStatus = () =>{
         this.setState({
             isloggedin: localStorage.getItem('loggedin')
+        })
+    }
+
+    getLoggedinEmail = (email)=>{
+        this.setState({
+            loggedinEmail:email
         })
     }
 

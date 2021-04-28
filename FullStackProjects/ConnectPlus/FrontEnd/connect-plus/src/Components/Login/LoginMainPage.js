@@ -25,6 +25,8 @@ function LoginMainPage(){
                     // dataObj.getLoggedStatus(true)
                     localStorage.setItem('loggedin',true)
                     dataObj.getLoggedStatus()
+                    // console.log(res.data[0].email)
+                    dataObj.getLoggedinEmail(res.data[0].email)
                     history.push('/dashboard')
                 }
                 else{

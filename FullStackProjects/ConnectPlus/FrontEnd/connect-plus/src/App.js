@@ -8,6 +8,7 @@ import {BrowserRouter,Route} from 'react-router-dom'
 import UserDashboard from './Pages/UserDashboard';
 import MessageContext from './MessageContext'
 import Home from './Pages/Home';
+import AddContact from './Components/AddContact';
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
      <Route path="/signup" component={SignUp} exact />
      <Route path='/login' component={Login} exact />
      <Route path='/dashboard' component={UserDashboard} exact/>
+     <Route path='/dashboard/add-contact' component={UserDashboard} exact />
+     <Route path='/dashboard/remove-contact' component={UserDashboard} exact />
+    
      </BrowserRouter>
      </MessageContext>
     </div>
