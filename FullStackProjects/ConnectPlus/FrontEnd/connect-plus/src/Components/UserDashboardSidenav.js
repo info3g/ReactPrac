@@ -10,7 +10,7 @@ function UserDashboardSidenav() {
         <p>logged in as {dataObj.loggedinEmail}</p>
         <Link to='/dashboard/add-contact'>Add Contact</Link>  
         <Link to='/dashboard/remove-contact'>Remove Contact</Link>
-        <Link to='/dashboard/delete-contact'>Delete Contact</Link>
+        {/* <Link to='/dashboard/delete-contact'>Delete Contact</Link> */}
     </div>
  </div>
 

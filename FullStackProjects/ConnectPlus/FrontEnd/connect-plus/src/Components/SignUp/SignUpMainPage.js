@@ -68,7 +68,9 @@ function SignUpMainPage() {
                 const data = {'username':username,'email':email,'password':pass}
                 axios.post(url,data)
                 .then((res)=>{
-                    console.log(res)
+                    // console.log('this is res')
+                    // console.log(res)
+                    dataObj.getLoggedinEmail(email)
                 }).catch((err)=>{
                     console.log(err)
                 })
@@ -76,7 +78,7 @@ function SignUpMainPage() {
                 //got to dashboard
                 localStorage.setItem('loggedin',true)
                 dataObj.getLoggedStatus()
-                // console.log(dataObj)
+               
                 history.push('/dashboard')
 
             }
